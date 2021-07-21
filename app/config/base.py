@@ -15,7 +15,7 @@ class BaseConfig(object):
     # 先读 env 环境变量中的配置
 
     # 指定加密KEY
-    SECRET_KEY = os.getenv("SECRET_KEY", "https://github.com/TaleLin/lin-cms-flask")
+    SECRET_KEY = os.getenv("SECRET_KEY")
 
     # 指定访问api服务的url, 用于文件上传
     # SITE_DOMAIN="https://lincms.example.com"

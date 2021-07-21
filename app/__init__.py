@@ -10,10 +10,11 @@ from flask import Flask
 def register_blueprints(app):
     from app.api.cms import create_cms
     from app.api.v1 import create_v1
+    from app.api.btc import create_btc
 
-    app.register_blueprint(create_v1(), url_prefix="/v1")
     app.register_blueprint(create_cms(), url_prefix="/cms")
-
+    app.register_blueprint(create_v1(), url_prefix="/v1")
+    app.register_blueprint(create_btc(), url_prefix="/btc")
 
 def register_cli(app):
     from app.cli import db_cli, plugin_cli
@@ -60,7 +61,7 @@ def set_global_config(**kwargs):
 def create_app(register_all=True, **kwargs):
     # http wsgi server托管启动需指定读取环境配置
     load_dotenv(".flaskenv")
-    app = Flask(__name__, static_folder="../assets")
+    app = Flask(__name__, static_folder="../static",template_folder="../templates")
     load_app_config(app)
     if register_all:
         from lin import Lin

@@ -4,6 +4,10 @@ from lin.exception import Duplicated, Failed, NotFound
 class BookNotFound(NotFound):
     message = "书籍不存在"
     _config = False
+    
+class BtcProjectNotFound(NotFound):
+    message = "项目不存在"
+    _config = False
 
 
 class BookDuplicated(Duplicated):
